@@ -3,9 +3,9 @@ import threading
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = '127.0.0.1'
-port = 9999
+port = 9998
 server.bind((host, port))
-server.listen(3)
+server.listen(5)
 
 connections = []
 address = []
@@ -17,19 +17,20 @@ def connectionAcp():
         conn, add = server.accept()
         connections.append(conn)
         address.append(add)
-        print(f"New connection from {add[0] + add[1]}")
+        print(f"New connection from {add[0] + str(add[1])}")
+
 
 def handle(c):
     while True:
-        msg=input()
-        if len(msg)>0:
+        msg = input()
+        if len(msg) > 0:
             try:
                 c.send(bytes(msg, 'utf-8'))
             except Exception as error:
-                print(f"Unable to send message due to: {Exception}")
+                print(f"Unable to send message due to: {error}")
         if msg == "back":
             break
-            main()
+
 
 def recv():
     while True:
@@ -41,14 +42,13 @@ def recv():
                 del address[nn]
 
 
-
 def connectionList():
     global connections
     result = ""
     for i, cc in enumerate(connections):
         try:
             cc.send(bytes("checked by peer", "utf-8"))
-            result=address[i][len(address)-1]+':'+str(address[len(address)]+'\n')
+            result = address[i][len(address) - 1] + ':' + str(address[len(address)]) + '\n'
         except:
             pass
 

@@ -3,13 +3,14 @@ import threading
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = '127.0.0.1'
-port = 8888
+port = 9998
 server.connect((host, port))
+
 
 def sender():
     global server
     while True:
-        msg =input(">>")
+        msg = input(">>")
         if len(msg) > 0:
             server.send(bytes(msg, "utf-8"))
 
@@ -20,7 +21,7 @@ def recv():
 
 
 def main():
-    t=threading.Thread(target=recv)
+    t = threading.Thread(target=recv)
     t.daemon = True
     t.start()
     sender()
