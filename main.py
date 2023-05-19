@@ -32,10 +32,10 @@ def start_peer1_interface():
     global text_peer1
 
     root = tk.Tk()
-    root.title("Peer 1")
+    root.title("User 1")
 
     # Message display area for Peer 1
-    text_peer1 = tk.Text(root, state='disabled', height=10, width=50)
+    text_peer1 = tk.Text(root, state='disabled', height=14, width=50)
     text_peer1.pack()
 
     # Text input area for Peer 1
@@ -53,10 +53,10 @@ def start_peer2_interface():
     global text_peer2
 
     root = tk.Tk()
-    root.title("Peer 2")
+    root.title("User 2")
 
     # Message display area for Peer 2
-    text_peer2 = tk.Text(root, state='disabled', height=10, width=50)
+    text_peer2 = tk.Text(root, state='disabled', height=14, width=50)
     text_peer2.pack()
 
     # Text input area for Peer 2
